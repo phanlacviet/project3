@@ -1,0 +1,166 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+/* Căn chỉnh và tạo kiểu cho thẻ <a> chứa button */
+.container a {
+    display: inline-block; /* Đảm bảo thẻ <a> không bị ảnh hưởng bởi button */
+    text-decoration: none; /* Loại bỏ gạch chân */
+}
+
+/* Button bên trong thẻ <a> */
+.container a button {
+    background-color: #007bff; /* Màu xanh dương */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 6px;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+    margin: 20px auto; /* Căn giữa nút */
+}
+
+/* Hiệu ứng hover */
+.container a button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Hiệu ứng khi nhấn */
+.container a button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.summary {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.summary a {
+    text-decoration: none;
+    width: 45%;
+}
+
+.summary div {
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.summary div:hover {
+    transform: translateY(-5px);
+}
+
+.summary div[style*="color: green;"] {
+    background: #e8f5e9;
+    border: 2px solid #4caf50;
+}
+
+.summary div[style*="color: red;"] {
+    background: #ffebee;
+    border: 2px solid #f44336;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+    font-size: 16px;
+}
+
+th {
+    background-color: #4caf50;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+th i {
+    margin-left: 5px;
+    font-size: 14px;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+    transition: background-color 0.3s ease;
+}
+
+/* Trạng thái với icon */
+.status-icon {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.status-icon.green {
+    color: #4caf50;
+}
+
+.status-icon.red {
+    color: #f44336;
+}
+
+/* Button Styling */
+.nutbam {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 6px;
+    transition: background 0.3s, transform 0.2s;
+    width: 100%;
+    display: block;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}

@@ -5,14 +5,18 @@ public class CanHo {
     private String tenCH;
     private int dienTich;
     private double gia;
+    private boolean trangThai;
+    private boolean isDeleted;
 
     public CanHo() {}
 
-    public CanHo(int idCanHo, String tenCH, int dienTich, double gia) {
+    public CanHo(int idCanHo, String tenCH, int dienTich, double gia, boolean trangThai, boolean isDeleted) {
         this.idCanHo = idCanHo;
         this.tenCH = tenCH;
         this.dienTich = dienTich;
         this.gia = gia;
+        this.trangThai=trangThai;
+        this.isDeleted=isDeleted;
     }
 
     public int getIdCanHo() {
@@ -45,5 +49,19 @@ public class CanHo {
 
     public void setGia(double gia) {
         this.gia = gia;
+    }
+    public boolean getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(boolean trangThai) {
+        this.trangThai = trangThai;
+    }
+    public boolean getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsdeleted(boolean isDeleted) {
+        this.isDeleted = isDeleted;
     }
 }
