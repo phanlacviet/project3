@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="DAO.QLChungCuDAO, model.CanHo,model.ThanhVienCanHo ,java.util.List" %>
+<%@ page import="DAO.PLVQLChungCuDAO, model.PLVCanHo,model.PLVThanhVienCanHo ,java.util.List" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,10 +51,10 @@
 
         <%
             // Khởi tạo DAO
-            QLChungCuDAO dao = new QLChungCuDAO();
+            PLVQLChungCuDAO dao = new PLVQLChungCuDAO();
             
             // Lấy danh sách tất cả căn hộ
-            List<CanHo> listCanHo = dao.getCanHoChuaSoHuu();
+            List<PLVCanHo> listCanHo = dao.getCanHoChuaSoHuu();
         %>
         <a href="BangCanHo.jsp">Quay lại</a>
         <table>
@@ -65,13 +65,13 @@
                 <th>Giá</th>
             </tr>
             <%
-                for (CanHo canho : listCanHo) {
+                for (PLVCanHo canho : listCanHo) {
             %>
             <tr>
-                <td><%= canho.getIdCanHo() %></td>
-                <td><%= canho.getTenCH() %></td>
-                <td><%= canho.getDienTich() %> m²</td>
-                <td><%= canho.getGia() %> VNĐ</td>
+                <td><%= canho.getPLVIdCanHo() %></td>
+                <td><%= canho.getPLVTenCH() %></td>
+                <td><%= canho.getPLVDienTich() %> m²</td>
+                <td><%= canho.getPLVGia() %> VNĐ</td>
             </tr>
             <%
                 }

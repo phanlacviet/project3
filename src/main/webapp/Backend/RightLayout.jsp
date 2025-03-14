@@ -48,7 +48,7 @@
 
         /* Cung cấp khoảng trống cho nội dung phía dưới thanh navbar */
         body {
-            padding-top: 60px; /* Điều chỉnh khoảng cách để tránh nội dung bị che khuất */
+            padding-top: 60px;
         }
     </style>
 </head>
@@ -56,14 +56,15 @@
 
     <!-- Thanh điều hướng (Navbar) -->
     <div class="navbar">
+    	<a href="#">Trang Chủ</a>
         <a href="../CanHo/BangCanHo.jsp">Căn Hộ</a>
         <a href="../DichVu/BangDichVu.jsp">Dịch Vụ</a>
         <a href="../ThanhVien/BangThanhVien.jsp">Thành Viên</a>
         <a href="../DichVu/DichVuDangKy.jsp">Dịch Vụ Đăng ký</a>
-        <a href="#">Gửi xe</a>
-        <a href="#">Thông Báo</a>
-        <a href="#">Thông Báo Cá Nhân</a>
-        <a href="#">Phản Ánh</a>
+        <a href="../GuiXe/BangGuiXe.jsp">Gửi xe</a>
+        <a href="../ThongBao/QuanLyThongBao.jsp">Thông Báo</a>
+        <a href="../ThongBao/QuanLyThongBaoCaNhan.jsp">Thông Báo Cá Nhân</a>
+        <a href="../PhanAnh/QuanLyPhanAnh.jsp">Phản Ánh</a>
     </div>
 
 </body>

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="DAO.QLChungCuDAO, model.ThanhVienCanHo, model.CanHo,java.util.List ,java.text.DecimalFormat" %>
+<%@ page import="DAO.PLVQLChungCuDAO, model.PLVThanhVienCanHo, model.PLVCanHo,java.util.List ,java.text.DecimalFormat" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,12 +15,12 @@
 
         <%
             // Khởi tạo DAO
-            QLChungCuDAO dao = new QLChungCuDAO();
+            PLVQLChungCuDAO dao = new PLVQLChungCuDAO();
             
-            CanHo ch = new CanHo();
+        	PLVCanHo ch = new PLVCanHo();
             DecimalFormat formatter = new DecimalFormat("#,###");
             // Lấy danh sách tất cả căn hộ
-            List<ThanhVienCanHo> listCanHo = dao.getCanHoDaSoHuu();
+            List<PLVThanhVienCanHo> listCanHo = dao.getCanHoDaSoHuu();
         %>
         <a href="BangCanHo.jsp"><button>Quay lại</button></a>
         <table>
@@ -32,16 +32,16 @@
                 <th>Giá <i class="fa fa-dollar-sign"></i></th>
             </tr>
             <%
-                for (ThanhVienCanHo canho : listCanHo) {
-                	int id=canho.getIdCanHo();
+                for (PLVThanhVienCanHo canho : listCanHo) {
+                	int id=canho.getPLVidCanHo();
                 	ch = dao.getIdCanHo(id);
-                	String formattedGia = formatter.format(ch.getGia());
+                	String formattedGia = formatter.format(ch.getPLVGia());
             %>
             <tr>
-                <td><%= canho.getTaiKhoanTV() %></td>
-                <td><%= canho.getIdCanHo() %></td>
-                <td><%= canho.getNgayMua() %></td>
-                <td><%= ch.getTenCH() %></td>
+                <td><%= canho.getPLVtaiKhoanTV() %></td>
+                <td><%= canho.getPLVidCanHo() %></td>
+                <td><%= canho.getPLVngayMua() %></td>
+                <td><%= ch.getPLVTenCH() %></td>
                 <td><%= formattedGia %> VNĐ</td>
             </tr>
             <%

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="DAO.QLChungCuDAO, model.ThanhVien, java.util.List, java.text.DecimalFormat" %>
+<%@ page import="DAO.PLVQLChungCuDAO, model.PLVThanhVien, java.util.List, java.text.DecimalFormat" %>
  
 <!DOCTYPE html>
 <html>
@@ -12,12 +12,12 @@
 <body>
 <jsp:include page="/Backend/RightLayout.jsp" />
 <div class="container">
-        <h2>Danh Sách Căn Hộ</h2>
+        <h2>Danh Sách Thành Viên</h2>
         <%
-            QLChungCuDAO dao = new QLChungCuDAO();
-            List<ThanhVien> listThanhVien = dao.getAllThanhVien();
+        	PLVQLChungCuDAO dao = new PLVQLChungCuDAO();
+            List<PLVThanhVien> listThanhVien = dao.getAllThanhVien();
         %>
-        <a href="#"><button>Thêm thành viên <i class="fa-solid fa-arrow-up-from-bracket"></i></button></a>
+        <a href="AddThanhVien.jsp"><button>Thêm thành viên <i class="fa-solid fa-arrow-up-from-bracket"></i></button></a>
         <table>
 		    <tr>
 		        <th>Tài khoản <i class="fa-solid fa-circle-user"></i></th>
@@ -28,14 +28,14 @@
 		        <th>Hành động <i class="fa-solid fa-arrow-pointer"></i></th>
 		    </tr>
 		    <%
-		        for (ThanhVien thanhvien : listThanhVien) {
-		        	boolean trangthai = thanhvien.isDeleted();
+		        for (PLVThanhVien thanhvien : listThanhVien) {
+		        	boolean trangthai = thanhvien.PLVisDeleted();
 		    %>
 		    <tr>
-		        <td><%= thanhvien.getTaiKhoanTV() %></td>
-		        <td><%= thanhvien.getMatKhau() %></td>
-		        <td><%= thanhvien.getHoTen() %></td>
-		        <td><%= thanhvien.getEmail() %></td>
+		        <td><%= thanhvien.getPLVtaiKhoanTV() %></td>
+		        <td><%= thanhvien.getPLVmatKhau() %></td>
+		        <td><%= thanhvien.getPLVhoTen() %></td>
+		        <td><%= thanhvien.getPLVemail() %></td>
 		        <td>
 		            <% if (trangthai) { %>
 		                <span class="status-icon green"><i class="fa fa-check-circle"></i></span>
@@ -43,8 +43,13 @@
 		                <span class="status-icon red"><i class="fa fa-times-circle"></i></span>
 		            <% } %>
 		        </td>
-		        <td><a href="UpdateThanhVien?idCanHo=<%= thanhvien.getTaiKhoanTV() %>"><i class="fa-solid fa-pen-to-square"></i></a> | 	
-		        	<a href="#"> <i class="fa-solid fa-trash"></i></a>
+		        <td><a href="PLVUpdateThanhVien?taiKhoanTV=<%= thanhvien.getPLVtaiKhoanTV() %>"><i class="fa-solid fa-pen-to-square"></i></a> | 	
+		        	<a href="PLVDeleteThanhVien?taiKhoanTV=<%= thanhvien.getPLVtaiKhoanTV() %>&action=delete"> 
+				        <i class="fa-solid fa-trash"></i>
+				    </a> | 
+				    <a href="PLVDeleteThanhVien?taiKhoanTV=<%= thanhvien.getPLVtaiKhoanTV() %>&action=restore"> 
+				        <i class="fa-solid fa-window-restore"></i>
+				    </a>
 		        </td>
 		    </tr>
 		    <%

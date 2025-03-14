@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import="DAO.QLChungCuDAO, model.DichVu, model.DichVuDangKy,java.util.List, java.text.DecimalFormat" %>
+    <%@ page import="DAO.PLVQLChungCuDAO, model.PLVDichVu, model.PLVDichVuDangKy,java.util.List, java.text.DecimalFormat" %>
     
 <!DOCTYPE html>
 <html>
@@ -13,11 +13,12 @@
 <body>
 <jsp:include page="/Backend/RightLayout.jsp" />
 <div class="container">
-        <h2>Danh Sách Dịch vụ</h2>
+        <h2>Danh Sách Dịch vụ đã được đăng ký</h2>
         <%
-            QLChungCuDAO dao = new QLChungCuDAO();
-            List<DichVuDangKy> listdichvudangky = dao.getAllDichVuDangKy();
+       		PLVQLChungCuDAO dao = new PLVQLChungCuDAO();
+            List<PLVDichVuDangKy> listdichvudangky = dao.getAllDichVuDangKy();
         %>
+        <a href="AddDichVuDangKy.jsp"><button>Thêm dịch vụ <i class="fa-solid fa-arrow-up-from-bracket"></i></button></a>
         <table>
 		    <tr>
 		        <th>ID Dịch Vụ DK <i class="fa-solid fa-circle-info"></i></th>
@@ -27,16 +28,16 @@
 		        <th>Giá thuê <i class="fa-solid fa-money-bill"></i></th>
 		    </tr>
 		    <%
-		        for (DichVuDangKy dichvudangky : listdichvudangky) {
-		        	DichVu dv = dao.getDichVuById(dichvudangky.getIdDichVu());
+		        for (PLVDichVuDangKy dichvudangky : listdichvudangky) {
+		        	PLVDichVu dv = dao.getDichVuById(dichvudangky.getPLVidDichVu());
 		        	
 		    %>
 		    <tr>
-		        <td><%= dichvudangky.getIdDichVuDK() %></td>
-		        <td><%= dichvudangky.getTaiKhoanTV() %></td>
-		        <td><%= dichvudangky.getIdDichVu() %></td>
-		        <td><%= dv.getTenDV()  %></td>
-		        <td><%= dv.getGiaThue()  %></td>
+		        <td><%= dichvudangky.getPLVidDichVuDK() %></td>
+		        <td><%= dichvudangky.getPLVtaiKhoanTV() %></td>
+		        <td><%= dichvudangky.getPLVidDichVu() %></td>
+		        <td><%= dv.getPLVtenDV()  %></td>
+		        <td><%= dv.getPLVgiaThue()  %></td>
 		    </tr>
 		    <%
 		        }

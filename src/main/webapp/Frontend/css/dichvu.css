@@ -1,0 +1,58 @@
+body-dichvu {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    text-align: center;
+    margin-top:150px;
+}
+
+.container-dichvu {
+    width: 80%;
+    margin: auto;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.service-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.service-item {
+    width: 30%;
+    background-color: white;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.service-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[name="action"][value="dangky"] {
+    background-color: green;
+    color: white;
+}
+
+button[name="action"][value="huy"] {
+    background-color: red;
+    color: white;
+}
+.khoangtrong{
+	height:100px;
+}

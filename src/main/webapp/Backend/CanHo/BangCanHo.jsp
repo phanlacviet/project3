@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="DAO.QLChungCuDAO, model.CanHo, java.util.List, java.text.DecimalFormat" %>
+<%@ page import="DAO.PLVQLChungCuDAO, model.PLVCanHo, java.util.List, java.text.DecimalFormat" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,10 +14,10 @@
     <div class="container">
         <h2>Danh Sách Căn Hộ</h2>
         <%
-            QLChungCuDAO dao = new QLChungCuDAO();
+        	PLVQLChungCuDAO dao = new PLVQLChungCuDAO();
             int soCanHoChuaSoHuu = dao.getSoCanHoChuaSoHuu();
             int soCanHoDaSoHuu = dao.getSoCanHoDaSoHuu();
-            List<CanHo> listCanHo = dao.getAllCanHo();
+            List<PLVCanHo> listCanHo = dao.getAllCanHo();
             DecimalFormat formatter = new DecimalFormat("#,###");
         %>
         <div class="summary">
@@ -35,18 +35,20 @@
 		        <th>Tên Căn Hộ <i class="fa fa-building"></i></th>
 		        <th>Diện Tích <i class="fa fa-ruler"></i></th>
 		        <th>Giá <i class="fa fa-dollar-sign"></i></th>
-		        <th>Trạng Thái <i class="fa fa-info-circle"></i></th>
+		        <th>Tình trạng sở hữu <i class="fa fa-info-circle"></i></th>
+		        <th>Trạng thái xóa </th>
 		        <th>Hành Động</th>
 		    </tr>
 		    <%
-		        for (CanHo canho : listCanHo) {
-		            String formattedGia = formatter.format(canho.getGia());
-		            boolean trangThai = canho.getTrangThai();
+		        for (PLVCanHo canho : listCanHo) {
+		            String formattedGia = formatter.format(canho.getPLVGia());
+		            boolean trangThai = canho.getPLVTrangThai();
+		            boolean trangThaixoa = canho.getPLVIsDeleted();
 		    %>
 		    <tr>
-		        <td><%= canho.getIdCanHo() %></td>
-		        <td><%= canho.getTenCH() %></td>
-		        <td><%= canho.getDienTich() %> m²</td>
+		        <td><%= canho.getPLVIdCanHo() %></td>
+		        <td><%= canho.getPLVTenCH() %></td>
+		        <td><%= canho.getPLVDienTich() %> m²</td>
 		        <td><%= formattedGia %> VNĐ</td>
 		        <td>
 		            <% if (trangThai) { %>
@@ -55,8 +57,20 @@
 		                <span class="status-icon red"><i class="fa fa-times-circle"></i></span>
 		            <% } %>
 		        </td>
-		        <td><a href="UpdateCanHo?idCanHo=<%= canho.getIdCanHo() %>"><i class="fa-solid fa-pen-to-square"></i></a> | 	
-		        	<a href="#"> <i class="fa-solid fa-trash"></i></a>
+		        <td>
+		            <% if (trangThaixoa) { %>
+		                <span class="status-icon green"><i class="fa fa-check-circle"></i></span>
+		            <% } else { %>
+		                <span class="status-icon red"><i class="fa fa-times-circle"></i></span>
+		            <% } %>
+		        </td>
+		        <td><a href="PLVUpdateCanHo?idCanHo=<%= canho.getPLVIdCanHo() %>"><i class="fa-solid fa-pen-to-square"></i></a> | 	
+		        	<a href="PLVDeleteCanHo?idCanHo=<%= canho.getPLVIdCanHo() %>&action=delete"> 
+				        <i class="fa-solid fa-trash"></i>
+				    </a> | 
+				    <a href="PLVDeleteCanHo?idCanHo=<%= canho.getPLVIdCanHo() %>&action=restore"> 
+				        <i class="fa-solid fa-window-restore"></i>
+				    </a>
 		        </td>
 		    </tr>
 		    <%

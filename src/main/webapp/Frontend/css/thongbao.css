@@ -1,0 +1,54 @@
+@charset "UTF-8";
+.body-thongbao{
+				margin-top:100px;
+}
+.container-thongbao {
+
+            width: 80%;
+            margin: 20px auto;
+        }
+        .thongbao {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .ngay-gui {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: gray;
+            font-size: 14px;
+        }
+        .tieu-de {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .noi-dung {
+            font-size: 16px;
+        }
+.thongbao-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.thongbao-chung, .thongbao-canhan {
+    width: 48%; /* Chia đôi trang */
+}
+
+.thongbao-chung h3, .thongbao-canhan h3 {
+    text-align: center;
+    color: #333;
+}
+.id-thanh-toan {
+    font-weight: bold;
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+        
