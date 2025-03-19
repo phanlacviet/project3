@@ -1,0 +1,86 @@
+/* Reset margin và padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+.body-thongtin {
+    margin-top: 120px;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 120px); /* Trừ margin-top */
+}
+
+/* Container chính */
+.container-thongtin {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Box chứa thông tin */
+.thongtin-box {
+    text-align: center;
+}
+
+/* Biểu tượng người dùng */
+.user-icon {
+    font-size: 80px;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+/* Mỗi mục thông tin */
+.thongtin-item {
+    margin-bottom: 20px;
+}
+
+/* Nhãn thông tin */
+.thongtin-label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Giá trị thông tin */
+.thongtin-value {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Danh sách căn hộ và dịch vụ */
+.thongtin-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.thongtin-list li {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* Nút quay về trang chủ */
+.btn-home {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-home:hover {
+    background-color: #0056b3;
+}

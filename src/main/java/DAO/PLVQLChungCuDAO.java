@@ -18,6 +18,7 @@ import model.PLVPhanAnh;
 import model.PLVThanhToan;
 import model.PLVThongBao;
 import model.PLVThongBaoCaNhan;
+import model.PLVQuanTri;
 public class PLVQLChungCuDAO {
 	private String url = "jdbc:mysql://localhost:3306/phanlacviet_2210900079_project3";
     private String username = "root";
@@ -50,6 +51,52 @@ public class PLVQLChungCuDAO {
     		e.printStackTrace();
     	}
     	return listcanHoChuaSoHuu;
+    }
+    public List<PLVCanHo> getCanHoChuaSoHuuSapXep(String sapXep) {
+        List<PLVCanHo> danhSachCanHo = new ArrayList<>();
+        String query = "SELECT * FROM canho WHERE trangThai = 0";
+
+        if (sapXep == null || sapXep.equals("reset")) {
+            query += " ORDER BY idCanHo ASC";
+        } else {
+            switch (sapXep) {
+                case "dienTichTang":
+                    query += " ORDER BY dienTich ASC";
+                    break;
+                case "dienTichGiam":
+                    query += " ORDER BY dienTich DESC";
+                    break;
+                case "giaTang":
+                    query += " ORDER BY gia ASC";
+                    break;
+                case "giaGiam":
+                    query += " ORDER BY gia DESC";
+                    break;
+                default:
+                    query += " ORDER BY idCanHo ASC";
+                    break;
+            }
+        }
+
+        try (Connection connection = connect();
+             PreparedStatement stmt = connection.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                PLVCanHo canHo = new PLVCanHo(
+                    rs.getInt("idCanHo"),
+                    rs.getString("tenCH"),
+                    rs.getInt("dienTich"),
+                    rs.getInt("gia"),
+                    rs.getBoolean("trangThai"),
+                    rs.getBoolean("isDeleted")
+                );
+                danhSachCanHo.add(canHo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return danhSachCanHo;
     }
     public List<PLVThanhVienCanHo> getCanHoDaSoHuu(){
     	List<PLVThanhVienCanHo> listcanHoDaSoHuu = new ArrayList<>();
@@ -380,6 +427,24 @@ public class PLVQLChungCuDAO {
         }
         return null;
     }
+	public PLVQuanTri checkLoginQuanTri(String taiKhoan, String matKhau) {
+	    String query = "SELECT * FROM quantri WHERE taiKhoan = ? AND matKhau = ? AND isDeleted = 0";
+	    try (Connection connection = connect();
+	         PreparedStatement stmt = connection.prepareStatement(query)) {
+	        stmt.setString(1, taiKhoan);
+	        stmt.setString(2, matKhau);
+	        try (ResultSet rs = stmt.executeQuery()) {
+	            if (rs.next()) {
+	                int idQuanTri = rs.getInt("idQuanTri");
+	                boolean isDeleted = rs.getBoolean("isDeleted");
+	                return new PLVQuanTri(idQuanTri, taiKhoan, matKhau, isDeleted);
+	            }
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return null;
+	}
 	public boolean register(PLVThanhVien thanhVien) {
         String query = "INSERT INTO thanhvien (taiKhoanTV, matKhau, hoTen, email) VALUES (?, ?, ?, ?)";
         try (Connection connection = connect();
@@ -703,5 +768,115 @@ public class PLVQLChungCuDAO {
 
         return danhSach;
     }
+    public List<String> getCanHoDaSoHuuByTaiKhoanTV(String taiKhoanTV) {
+        List<String> danhSachCanHo = new ArrayList<>();
+        String query = "SELECT c.tenCH FROM thanhviencanho t JOIN canho c ON t.idCanHo = c.idCanHo WHERE t.taiKhoanTV = ? AND t.isDeleted = 0";
+        try (Connection conn = connect();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, taiKhoanTV);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                danhSachCanHo.add(rs.getString("tenCH"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return danhSachCanHo;
+    }
+    public List<PLVDichVu> getDichVuDaDangKyByTaiKhoanTV(String taiKhoanTV) {
+        List<PLVDichVu> danhSachDichVu = new ArrayList<>();
+        String query = "SELECT d.* FROM dichvudangky dv JOIN dichvu d ON dv.idDichVu = d.idDichVu WHERE dv.taiKhoanTV = ? AND dv.isDeleted = 0";
 
+        try (Connection connection = connect();
+             PreparedStatement stmt = connection.prepareStatement(query)) {
+
+            stmt.setString(1, taiKhoanTV);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                PLVDichVu dichVu = new PLVDichVu(
+                    rs.getInt("idDichVu"),
+                    rs.getString("tenDV"),
+                    rs.getInt("giaThue"),
+                    rs.getBoolean("isDeleted")
+                );
+                danhSachDichVu.add(dichVu);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return danhSachDichVu;
+    }
+    public List<PLVThongBao> getTop3ThongBaoMoiNhat() {
+        List<PLVThongBao> danhSachThongBao = new ArrayList<>();
+        String query = "SELECT * FROM thongbao WHERE isDeleted = 0 ORDER BY ngayGui DESC LIMIT 3";
+
+        try (Connection connection = connect();
+             PreparedStatement stmt = connection.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                PLVThongBao thongBao = new PLVThongBao(
+                    rs.getInt("idThongBao"),
+                    rs.getString("tieuDe"),
+                    rs.getString("noiDung"),
+                    rs.getDate("ngayGui"),
+                    rs.getBoolean("isDeleted")
+                );
+                danhSachThongBao.add(thongBao);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return danhSachThongBao;
+    }
+    public List<PLVPhanAnh> getTop3PhanAnhMoiNhatByTaiKhoanTV(String taiKhoanTV) {
+        List<PLVPhanAnh> danhSachPhanAnh = new ArrayList<>();
+        String query = "SELECT * FROM phananh WHERE taiKhoanTV = ? AND isDeleted = 0 ORDER BY ngayGui DESC LIMIT 3";
+
+        try (Connection connection = connect();
+             PreparedStatement stmt = connection.prepareStatement(query)) {
+
+            stmt.setString(1, taiKhoanTV);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                PLVPhanAnh phanAnh = new PLVPhanAnh(
+                    rs.getInt("idPhanAnh"),
+                    rs.getString("taiKhoanTV"),
+                    rs.getString("noiDung"),
+                    rs.getDate("ngayGui"),
+                    rs.getBoolean("isDeleted")
+                );
+                danhSachPhanAnh.add(phanAnh);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return danhSachPhanAnh;
+    }
+    public boolean doiMatKhau(String taiKhoanTV, String matKhauCu, String matKhauMoi) {
+        String queryCheck = "SELECT * FROM thanhvien WHERE taiKhoanTV = ? AND matKhau = ?";
+        String queryUpdate = "UPDATE thanhvien SET matKhau = ? WHERE taiKhoanTV = ?";
+
+        try (Connection connection = connect();
+             PreparedStatement stmtCheck = connection.prepareStatement(queryCheck);
+             PreparedStatement stmtUpdate = connection.prepareStatement(queryUpdate)) {
+            stmtCheck.setString(1, taiKhoanTV);
+            stmtCheck.setString(2, matKhauCu);
+            ResultSet rs = stmtCheck.executeQuery();
+
+            if (!rs.next()) {
+                return false;
+            }
+            stmtUpdate.setString(1, matKhauMoi);
+            stmtUpdate.setString(2, taiKhoanTV);
+
+            int rowsAffected = stmtUpdate.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

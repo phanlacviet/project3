@@ -19,6 +19,15 @@
     <meta charset="UTF-8">
     <title>Dịch vụ - <%= taiKhoanTV %></title>
     <link rel="stylesheet" type="text/css" href="css/dichvu.css">
+    <script>
+        function xacNhanDangKy(event, action) {
+            let message = action === 'dangky' ? "Bạn có chắc chắn muốn đăng ký dịch vụ này không?" 
+                                              : "Bạn có chắc chắn muốn hủy đăng ký dịch vụ này không?";
+            if (!confirm(message)) {
+                event.preventDefault();
+            }
+        }
+    </script>
 </head>
 <body class="body-dichvu">
 <jsp:include page="HeaderFrontend.jsp"/>
@@ -32,10 +41,10 @@
                     boolean daDangKy = dao.CheckDangKyDichVu(dv.getPLVidDichVu(), taiKhoanTV);
             %>
             <div class="service-item">
-                <img src="images/<%= dv.getPLVidDichVu() %>.jfif" alt="<%= dv.getPLVtenDV() %>">
+                
                 <h3><%= dv.getPLVtenDV() %></h3>
                 <p><%= String.format("%,d", dv.getPLVgiaThue()) %> VNĐ</p>
-                <form action="PLVDangKyDichVu" method="post">
+                <form action="PLVDangKyDichVu" method="post" onsubmit="xacNhanDangKy(event, '<%= daDangKy ? "huy" : "dangky" %>')">
                     <input type="hidden" name="idDichVu" value="<%= dv.getPLVidDichVu() %>">
                     <input type="hidden" name="taiKhoanTV" value="<%= taiKhoanTV %>">
                     <button type="submit" name="action" value="<%= daDangKy ? "huy" : "dangky" %>">

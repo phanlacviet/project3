@@ -14,7 +14,6 @@
         <h2>Hóa đơn thanh toán</h2>
 
         <%
-            // Lấy thông tin tài khoản từ session
             HttpSession sessionUser = request.getSession();
             PLVThanhVien thanhVien = (PLVThanhVien) sessionUser.getAttribute("PLvMember");
 

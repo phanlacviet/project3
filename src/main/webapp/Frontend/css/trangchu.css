@@ -1,0 +1,223 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+.body-trangchu {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Container chính */
+.container-trangchu {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Phần chào mừng */
+.welcome-section {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+.welcome-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.welcome-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* Phần thông báo */
+.notifications-section {
+    margin-bottom: 40px;
+}
+
+.notifications-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.notification-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.notification-item {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.notification-icon {
+    font-size: 2rem;
+    color: #007bff;
+    margin-right: 20px;
+}
+
+.notification-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.notification-content p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.notification-date {
+    font-size: 0.9rem;
+    color: #999;
+}
+
+/* Phần dịch vụ */
+.services-section {
+    margin-bottom: 40px;
+}
+
+.services-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.service-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.service-item {
+    flex: 1 1 200px;
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.service-icon {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.service-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.service-item p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Phần phản ánh */
+.feedbacks-section {
+    margin-bottom: 40px;
+}
+
+.feedbacks-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.feedback-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.feedback-item {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-icon {
+    font-size: 2rem;
+    color: #007bff;
+    margin-right: 20px;
+}
+
+.feedback-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.feedback-content p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.feedback-date {
+    font-size: 0.9rem;
+    color: #999;
+}
+
+/* Phần liên hệ */
+.contact-section {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+.contact-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.contact-section p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.contact-info p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.contact-info i {
+    margin-right: 10px;
+}
+
+/* Footer */
+.footer-trangchu {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    margin-top: 40px;
+}

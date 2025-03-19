@@ -5,58 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Layout Navbar</title>
-    
-    <style>
-        /* Đặt nền màu trắng */
-        body {
-            background-color: white;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        /* Thanh nav */
-        .navbar {
-            background-color: #333;
-            overflow: hidden;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            padding: 14px 20px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000; /* Đảm bảo thanh nav ở trên cùng */
-        }
-
-        .navbar a {
-            text-decoration: none;
-            color: white;
-            padding: 12px 16px;
-            text-align: center;
-            font-size: 16px;
-            transition: 0.3s;
-            border-radius: 5px;
-        }
-
-        /* Hiệu ứng hover */
-        .navbar a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-
-        /* Cung cấp khoảng trống cho nội dung phía dưới thanh navbar */
-        body {
-            padding-top: 60px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../css/Layout.css">
 </head>
 <body>
-
-    <!-- Thanh điều hướng (Navbar) -->
     <div class="navbar">
-    	<a href="#">Trang Chủ</a>
+    	<a href="http://localhost:9457/PhanLacViet_2210900079_Project3/Frontend/CanHo.jsp">Trang Chủ</a>
         <a href="../CanHo/BangCanHo.jsp">Căn Hộ</a>
         <a href="../DichVu/BangDichVu.jsp">Dịch Vụ</a>
         <a href="../ThanhVien/BangThanhVien.jsp">Thành Viên</a>

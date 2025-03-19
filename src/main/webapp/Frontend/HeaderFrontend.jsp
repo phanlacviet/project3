@@ -25,18 +25,17 @@
                     
                     
                     <%
-                        // Check if the user is logged in (using session attribute)
                         Object user = session.getAttribute("PLvMember");
                         if (user != null) {
                             out.print("<li class=\"dropdown\">");
                             out.print("<a href=\"#\" class=\"nav-link\"> " + "<i class=\"fa-solid fa-user\"></i>" + "</a>");
                             out.print("<div class=\"dropdown-content\">");
                             out.print("<a href=\"" + request.getContextPath() + "/Frontend/ThongTin.jsp\">Thông tin cá nhân</a>");
-                            out.print("<a href=\"" + request.getContextPath() + "/ChangePassword\">Đổi mật khẩu</a>");
+                            out.print("<a href=\"" + request.getContextPath() + "/Frontend/DoiMatKhau.jsp\">Đổi mật khẩu</a>");
                             out.print("<a href=\"" + request.getContextPath() + "/Frontend/ThongBao.jsp\">Thông báo</a>");
                             out.print("<a href=\"" + request.getContextPath() + "/Frontend/ThanhToan.jsp\">Thanh toán</a>");
                             out.print("<a href=\"" + request.getContextPath() + "/Frontend/DichVu.jsp\">Dịch vụ đăng ký</a>");
-                            out.print("<a href=\"" + request.getContextPath() + "/Frontend/PhanAnh\">Phản ánh</a>");
+                            out.print("<a href=\"" + request.getContextPath() + "/Frontend/PhanAnh.jsp\">Phản ánh</a>");
                             out.print("<a href=\"" + request.getContextPath() + "/PLVLogout\">Đăng xuất</a>");
                             out.print("</div>");
                             out.print("</li>");
@@ -46,7 +45,7 @@
                     %>
                     <li><a href="<%= request.getContextPath() %>/Frontend/TrangChu.jsp">Trang chủ</a></li>
                     <li><a href="<%= request.getContextPath() %>/Frontend/CanHo.jsp">Căn hộ</a></li>
-                    <li><a href="<%= request.getContextPath() %>/contact">Contact</a></li>
+                    <li><a href="#">Contact</a></li>
                     
                 </ul>
             </div>
